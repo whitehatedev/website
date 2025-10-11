@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - NexustekFusion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --whatsapp: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav-logo a {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .nav-logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .nav-toggle, .nav-close {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Products Hero Section */
+        .products-hero {
+            padding: 12rem 0 5rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .products-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .products-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Amazon-style Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-image-slider {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .product-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .product-slide img,
+        .product-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-slider-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-slider-arrows {
+            opacity: 1;
+        }
+
+        .product-arrow {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .product-arrow:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .product-slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .product-slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .product-slider-dot.active {
+            background: white;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: var(--warning);
+        }
+
+        .rating-count {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-features li {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .product-features li i {
+            color: var(--success);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .product-pricing {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .original-price {
+            font-size: 1rem;
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+
+        .discount {
+            background: var(--error);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .btn-product {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp-inquiry {
+            background: var(--whatsapp);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-whatsapp-inquiry:hover {
+            background: #128C7E;
+        }
+
+        /* Product Details Modal with Zoom */
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .modal-image-slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f5f5f5;
+        }
+
+        .modal-slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .modal-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-slide img,
+        .modal-slide video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-slider-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            transform: translateY(-50%);
+        }
+
+        .modal-arrow {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .modal-arrow:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .modal-slider-dot.active {
+            background: white;
+        }
+
+        .zoom-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 5;
+        }
+
+        .zoom-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .zoom-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-details h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-pricing {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-current-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .modal-original-price {
+            font-size: 1.2rem;
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+
+        .modal-discount {
+            background: var(--error);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .modal-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .modal-features {
+            margin-bottom: 2rem;
+        }
+
+        .modal-features h3 {
+            margin-bottom: 1rem;
+        }
+
+        .modal-features ul {
+            list-style: none;
+        }
+
+        .modal-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .modal-features li i {
+            color: var(--success);
+            margin-top: 0.2rem;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-section p {
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section ul li a {
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .contact-info i {
+            margin-top: 0.25rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image-slider {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-toggle, .nav-close {
+                display: block;
+            }
+
+            .nav-close {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .products-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .modal-arrow {
+                width: 40px;
+                height: 40px;
+            }
+
+            .zoom-btn {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .products-hero {
+                padding: 10rem 0 3rem;
+            }
+
+            .products-hero h1 {
+                font-size: 2rem;
+            }
+
+            .products-hero p {
+                font-size: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem auto;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .modal-image-slider {
+                height: 300px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Nexustek<span>Fusion</span></a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="products.html" class="nav-link active">Products</a>
+                <a href="team.html" class="nav-link">Team</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Hero Section -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Innovative software solutions designed to transform businesses and drive digital evolution.</p>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-showcase">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-product="1">
+                    <div class="product-badge">BEST SELLER</div>
+                    <div class="product-image-slider">
+                        <div class="product-slider-track" id="slider-1">
+                            <div class="product-slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="FusionAI Analytics Dashboard">
+                            </div>
+                            <div class="product-slide">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="FusionAI Analytics Reports">
+                            </div>
+                            <div class="product-slide">
+                                <video controls>
+                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-moving-lines-1767-large.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                        <div class="product-slider-arrows">
+                            <div class="product-arrow prev" data-slider="1">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="product-arrow next" data-slider="1">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="product-slider-dots" id="dots-1">
+                            <div class="product-slider-dot active" data-slide="0"></div>
+                            <div class="product-slider-dot" data-slide="1"></div>
+                            <div class="product-slider-dot" data-slide="2"></div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">FusionAI Analytics</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(128 reviews)</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Real-time predictive analytics</li>
+                            <li><i class="fas fa-check"></i> Customizable dashboards</li>
+                            <li><i class="fas fa-check"></i> Automated reporting</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="current-price">$299/mo</span>
+                            <span class="original-price">$399/mo</span>
+                            <span class="discount">25% OFF</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-product btn-whatsapp-inquiry">
+                                <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-product="2">
+                    <div class="product-badge">NEW</div>
+                    <div class="product-image-slider">
+                        <div class="product-slider-track" id="slider-2">
+                            <div class="product-slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="SecureVault Dashboard">
+                            </div>
+                            <div class="product-slide">
+                                <video controls>
+                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-moving-lines-1767-large.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                        <div class="product-slider-arrows">
+                            <div class="product-arrow prev" data-slider="2">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="product-arrow next" data-slider="2">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="product-slider-dots" id="dots-2">
+                            <div class="product-slider-dot active" data-slide="0"></div>
+                            <div class="product-slider-dot" data-slide="1"></div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">SecureVault Enterprise</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(94 reviews)</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> End-to-end encryption</li>
+                            <li><i class="fas fa-check"></i> Zero-trust architecture</li>
+                            <li><i class="fas fa-check"></i> Compliance automation</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="current-price">$499/mo</span>
+                            <span class="original-price">$599/mo</span>
+                            <span class="discount">17% OFF</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-product btn-whatsapp-inquiry">
+                                <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-product="3">
+                    <div class="product-image-slider">
+                        <div class="product-slider-track" id="slider-3">
+                            <div class="product-slide">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="NexusChat Pro Interface">
+                            </div>
+                            <div class="product-slide">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="NexusChat Pro Dashboard">
+                            </div>
+                            <div class="product-slide">
+                                <video controls>
+                                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-moving-lines-1767-large.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                        <div class="product-slider-arrows">
+                            <div class="product-arrow prev" data-slider="3">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                            <div class="product-arrow next" data-slider="3">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                        <div class="product-slider-dots" id="dots-3">
+                            <div class="product-slider-dot active" data-slide="0"></div>
+                            <div class="product-slider-dot" data-slide="1"></div>
+                            <div class="product-slider-dot" data-slide="2"></div>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">NexusChat Pro</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-count">(76 reviews)</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Natural language processing</li>
+                            <li><i class="fas fa-check"></i> Multi-channel support</li>
+                            <li><i class="fas fa-check"></i> Sentiment analysis</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="current-price">$199/mo</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-product btn-whatsapp-inquiry">
+                                <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal with Zoom -->
+    <div class="product-modal" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-slider">
+                    <div class="modal-slider-track" id="modal-slider">
+                        <!-- Images/videos will be dynamically added here -->
+                    </div>
+                    <div class="modal-slider-arrows">
+                        <div class="modal-arrow prev" id="modal-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="modal-arrow next" id="modal-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                    <div class="modal-slider-dots" id="modal-dots">
+                        <!-- Dots will be dynamically added here -->
+                    </div>
+                    <div class="zoom-controls">
+                        <div class="zoom-btn" id="zoom-in">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                        <div class="zoom-btn" id="zoom-out">
+                            <i class="fas fa-search-minus"></i>
+                        </div>
+                        <div class="zoom-btn" id="zoom-reset">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <h2 id="modal-title">Product Title</h2>
+                    <div class="modal-rating">
+                        <div class="stars" id="modal-stars">
+                            <!-- Stars will be dynamically added here -->
+                        </div>
+                        <span class="rating-count" id="modal-rating-count">(0 reviews)</span>
+                    </div>
+                    <div class="modal-pricing">
+                        <span class="modal-current-price" id="modal-current-price">$0</span>
+                        <span class="modal-original-price" id="modal-original-price"></span>
+                        <span class="modal-discount" id="modal-discount"></span>
+                    </div>
+                    <p class="modal-description" id="modal-description">Product description will appear here.</p>
+                    <div class="modal-features">
+                        <h3>Key Features</h3>
+                        <ul id="modal-features">
+                            <!-- Features will be dynamically added here -->
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="modal-btn btn-whatsapp-inquiry">
+                            <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NexustekFusion</h3>
+                    <p>Innovative technology solutions for the modern business. We fuse cutting-edge technologies to create transformative digital experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Software Development</a></li>
+                        <li><a href="services.html">AI & ML Solutions</a></li>
+                        <li><a href="services.html">Cloud Services</a></li>
+                        <li><a href="services.html">Cybersecurity</a></li>
+                        <li><a href="services.html">IoT Solutions</a></li>
+                        <li><a href="services.html">Data Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Innovation City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@nexustekfusion.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NexustekFusion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data
+        const products = {
+            1: {
+                title: "FusionAI Analytics",
+                rating: 4.5,
+                ratingCount: 128,
+                currentPrice: "$299/mo",
+                originalPrice: "$399/mo",
+                discount: "25% OFF",
+                description: "Advanced analytics platform that uses machine learning to forecast trends, identify opportunities, and provide actionable insights for data-driven decision making.",
+                features: [
+                    "Real-time predictive analytics",
+                    "Customizable dashboards",
+                    "Automated reporting",
+                    "Multi-data source integration",
+                    "Advanced visualization tools",
+                    "Custom ML model deployment"
+                ],
+                media: [
+                    {
+                        type: "image",
+                        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        alt: "FusionAI Analytics Dashboard"
+                    },
+                    {
+                        type: "image",
+                        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        alt: "FusionAI Analytics Reports"
+                    },
+                    {
+                        type: "video",
+                        src: "https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-moving-lines-1767-large.mp4",
+                        alt: "FusionAI Analytics Demo"
+                    }
+                ]
+            },
+            2: {
+                title: "SecureVault Enterprise",
+                rating: 5,
+                ratingCount: 94,
+                currentPrice: "$499/mo",
+                originalPrice: "$599/mo",
+                discount: "17% OFF",
+                description: "Advanced data security platform that provides encryption, access control, and threat detection to protect sensitive business information across cloud and on-premises environments.",
+                features: [
+                    "End-to-end encryption",
+                    "Zero-trust architecture",
+                    "Compliance automation",
+                    "Real-time threat detection",
+                    "Advanced access controls",
+                    "Comprehensive audit logs"
+                ],
+                media: [
+                    {
+                        type: "image",
+                        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        alt: "SecureVault Dashboard"
+                    },
+                    {
+                        type: "video",
+                        src: "https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-moving-lines-1767-large.mp4",
+                        alt: "SecureVault Demo"
+                    }
+                ]
+            },
+            3: {
+                title: "NexusChat Pro",
+                rating: 4,
+                ratingCount: 76,
+                currentPrice: "$199/mo",
+                originalPrice: null,
+                discount: null,
+                description: "AI-powered chatbot platform that provides 24/7 customer support, understands natural language, and seamlessly escalates to human agents when needed.",
+                features: [
+                    "Natural language processing",
+                    "Multi-channel support",
+                    "Sentiment analysis",
+                    "Easy integration with CRM",
+                    "Custom conversation flows",
+                    "Analytics and reporting"
+                ],
+                media: [
+                    {
+                        type: "image",
+                        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        alt: "NexusChat Pro Interface"
+                    },
+                    {
+                        type: "image",
+                        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+                        alt: "NexusChat Pro Dashboard"
+                    },
+                    {
+                        type: "video",
+                        src: "https://assets.mixkit.co/videos/preview/mixkit-abstract-background-with-moving-lines-1767-large.mp4",
+                        alt: "NexusChat Pro Demo"
+                    }
+                ]
+            }
+        };
+
+        // Global variables for modal state
+        let modalCurrentSlide = 0;
+        let modalSlides = [];
+        let modalDots = [];
+        let currentZoom = 1;
+        const ZOOM_STEP = 0.2;
+        const MAX_ZOOM = 3;
+        const MIN_ZOOM = 1;
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize product image sliders
+            initializeProductSliders();
+
+            // Set up product card click events
+            setupProductCards();
+
+            // Set up modal functionality
+            setupModal();
+
+            // Set up WhatsApp buttons
+            setupWhatsAppButtons();
+
+            // Mobile Navigation Toggle
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.add('active');
+                });
+            }
+
+            if (navClose) {
+                navClose.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            }
+
+            // Close mobile menu when clicking on a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+        });
+
+        // Initialize product image sliders
+        function initializeProductSliders() {
+            // For each product card, set up the image slider
+            document.querySelectorAll('.product-card').forEach(card => {
+                const productId = card.getAttribute('data-product');
+                const sliderTrack = document.getElementById(`slider-${productId}`);
+                const dotsContainer = document.getElementById(`dots-${productId}`);
+                const prevArrow = card.querySelector('.product-arrow.prev');
+                const nextArrow = card.querySelector('.product-arrow.next');
+
+                if (!sliderTrack) return;
+
+                const slides = sliderTrack.querySelectorAll('.product-slide');
+                const dots = dotsContainer.querySelectorAll('.product-slider-dot');
+
+                let currentSlide = 0;
+                let slideInterval;
+
+                // Function to start auto slide
+                function startAutoSlide() {
+                    slideInterval = setInterval(() => {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        updateSlider(sliderTrack, dots, currentSlide);
+                    }, 4000);
+                }
+
+                // Start auto slide
+                startAutoSlide();
+
+                // Pause auto-slide on hover
+                card.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    startAutoSlide();
+                });
+
+                // Arrow click events
+                prevArrow.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    updateSlider(sliderTrack, dots, currentSlide);
+                });
+
+                nextArrow.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    updateSlider(sliderTrack, dots, currentSlide);
+                });
+
+                // Dot click events
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        currentSlide = index;
+                        updateSlider(sliderTrack, dots, currentSlide);
+                    });
+                });
+            });
+        }
+
+        // Update slider position and active dot
+        function updateSlider(sliderTrack, dots, currentSlide) {
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Set up product card click events
+        function setupProductCards() {
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Don't open modal if clicking on buttons or arrows
+                    if (e.target.closest('.btn-product') || e.target.closest('.product-arrow')) return;
+
+                    const productId = card.getAttribute('data-product');
+                    openProductModal(productId);
+                });
+            });
+        }
+
+        // Set up modal functionality
+        function setupModal() {
+            const modal = document.getElementById('product-modal');
+            const closeBtn = document.getElementById('modal-close');
+            const prevBtn = document.getElementById('modal-prev');
+            const nextBtn = document.getElementById('modal-next');
+            const zoomInBtn = document.getElementById('zoom-in');
+            const zoomOutBtn = document.getElementById('zoom-out');
+            const zoomResetBtn = document.getElementById('zoom-reset');
+
+            // Close modal when clicking close button
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+                resetZoom();
+            });
+
+            // Close modal when clicking outside content
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    resetZoom();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    resetZoom();
+                }
+            });
+
+            // Previous button
+            prevBtn.addEventListener('click', () => {
+                modalCurrentSlide = (modalCurrentSlide - 1 + modalSlides.length) % modalSlides.length;
+                updateModalSlider();
+                resetZoom();
+            });
+
+            // Next button
+            nextBtn.addEventListener('click', () => {
+                modalCurrentSlide = (modalCurrentSlide + 1) % modalSlides.length;
+                updateModalSlider();
+                resetZoom();
+            });
+
+            // Zoom in
+            zoomInBtn.addEventListener('click', () => {
+                if (currentZoom < MAX_ZOOM) {
+                    currentZoom += ZOOM_STEP;
+                    applyZoom();
+                }
+            });
+
+            // Zoom out
+            zoomOutBtn.addEventListener('click', () => {
+                if (currentZoom > MIN_ZOOM) {
+                    currentZoom -= ZOOM_STEP;
+                    applyZoom();
+                }
+            });
+
+            // Reset zoom
+            zoomResetBtn.addEventListener('click', () => {
+                resetZoom();
+            });
+        }
+
+        // Function to update modal slider
+        function updateModalSlider() {
+            const modalSliderTrack = document.getElementById('modal-slider');
+            if (!modalSliderTrack) return;
+
+            modalSliderTrack.style.transform = `translateX(-${modalCurrentSlide * 100}%)`;
+
+            modalDots.forEach((dot, index) => {
+                if (index === modalCurrentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Apply zoom to current slide
+        function applyZoom() {
+            if (modalSlides.length > 0 && modalCurrentSlide < modalSlides.length) {
+                const currentMedia = modalSlides[modalCurrentSlide].querySelector('img, video');
+                if (currentMedia) {
+                    currentMedia.style.transform = `scale(${currentZoom})`;
+                }
+            }
+        }
+
+        // Reset zoom to original size
+        function resetZoom() {
+            currentZoom = 1;
+            if (modalSlides.length > 0 && modalCurrentSlide < modalSlides.length) {
+                const currentMedia = modalSlides[modalCurrentSlide].querySelector('img, video');
+                if (currentMedia) {
+                    currentMedia.style.transform = 'scale(1)';
+                }
+            }
+        }
+
+        // Open product modal with product data
+        function openProductModal(productId) {
+            const product = products[productId];
+            if (!product) return;
+
+            const modal = document.getElementById('product-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalStars = document.getElementById('modal-stars');
+            const modalRatingCount = document.getElementById('modal-rating-count');
+            const modalCurrentPrice = document.getElementById('modal-current-price');
+            const modalOriginalPrice = document.getElementById('modal-original-price');
+            const modalDiscount = document.getElementById('modal-discount');
+            const modalDescription = document.getElementById('modal-description');
+            const modalFeatures = document.getElementById('modal-features');
+            const modalSlider = document.getElementById('modal-slider');
+            const modalDotsContainer = document.getElementById('modal-dots');
+
+            // Set product details
+            modalTitle.textContent = product.title;
+
+            // Set rating stars
+            modalStars.innerHTML = '';
+            const fullStars = Math.floor(product.rating);
+            const hasHalfStar = product.rating % 1 !== 0;
+
+            for (let i = 0; i < fullStars; i++) {
+                modalStars.innerHTML += '<i class="fas fa-star"></i>';
+            }
+
+            if (hasHalfStar) {
+                modalStars.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+            }
+
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                modalStars.innerHTML += '<i class="far fa-star"></i>';
+            }
+
+            modalRatingCount.textContent = `(${product.ratingCount} reviews)`;
+            modalCurrentPrice.textContent = product.currentPrice;
+
+            // Set pricing information
+            if (product.originalPrice) {
+                modalOriginalPrice.textContent = product.originalPrice;
+                modalOriginalPrice.style.display = 'inline';
+            } else {
+                modalOriginalPrice.style.display = 'none';
+            }
+
+            if (product.discount) {
+                modalDiscount.textContent = product.discount;
+                modalDiscount.style.display = 'inline';
+            } else {
+                modalDiscount.style.display = 'none';
+            }
+
+            modalDescription.textContent = product.description;
+
+            // Set features
+            modalFeatures.innerHTML = '';
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+                modalFeatures.appendChild(li);
+            });
+
+            // Set up image/video slider
+            modalSlider.innerHTML = '';
+            modalDotsContainer.innerHTML = '';
+
+            product.media.forEach((media, index) => {
+                // Add slide
+                const slide = document.createElement('div');
+                slide.className = 'modal-slide';
+
+                if (media.type === 'image') {
+                    slide.innerHTML = `<img src="${media.src}" alt="${media.alt}">`;
+                } else if (media.type === 'video') {
+                    slide.innerHTML = `
+                        <video controls>
+                            <source src="${media.src}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                }
+
+                modalSlider.appendChild(slide);
+
+                // Add dot
+                const dot = document.createElement('div');
+                dot.className = `modal-slider-dot ${index === 0 ? 'active' : ''}`;
+                dot.setAttribute('data-slide', index);
+                modalDotsContainer.appendChild(dot);
+
+                // Add click event to dot
+                dot.addEventListener('click', () => {
+                    modalCurrentSlide = index;
+                    updateModalSlider();
+                    resetZoom();
+                });
+            });
+
+            // Update global references
+            modalCurrentSlide = 0;
+            modalSlides = modalSlider.querySelectorAll('.modal-slide');
+            modalDots = modalDotsContainer.querySelectorAll('.modal-slider-dot');
+
+            // Reset zoom
+            resetZoom();
+
+            // Show modal
+            modal.style.display = 'block';
+        }
+
+        // Set up WhatsApp buttons
+        function setupWhatsAppButtons() {
+            document.querySelectorAll('.btn-whatsapp-inquiry').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent triggering product card click
+
+                    // Get product title from closest product card
+                    const productCard = this.closest('.product-card');
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+
+                    // Create WhatsApp message
+                    const message = `Hello! I'm interested in learning more about ${productTitle}. Could you please provide more information?`;
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`;
+
+                    // Open WhatsApp
+                    window.open(whatsappUrl, '_blank');
+                });
+            });
+
+            // Also handle modal WhatsApp button
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.modal-btn.btn-whatsapp-inquiry')) {
+                    const modalTitle = document.getElementById('modal-title').textContent;
+                    const message = `Hello! I'm interested in learning more about ${modalTitle}. Could you please provide more information?`;
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`;
+                    window.open(whatsappUrl, '_blank');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

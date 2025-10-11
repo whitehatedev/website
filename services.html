@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - NexustekFusion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --whatsapp: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .nav-logo a {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        .nav-logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .nav-toggle, .nav-close {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Services Hero Section */
+        .services-hero {
+            padding: 12rem 0 5rem;
+            background: linear-gradient(rgba(37, 99, 235, 0.8), rgba(58, 123, 213, 0.8)),
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .services-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .service-features li i {
+            color: var(--success);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-service {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-learn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-learn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-quote {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-quote:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Service Categories */
+        .service-categories {
+            padding: 5rem 0;
+            background-color: #f8fafc;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .category-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            counter-reset: step-counter;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 2rem 1.5rem;
+            background: var(--light);
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+
+        .process-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .process-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .process-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .process-description {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn-primary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .cta-section .btn-primary:hover {
+            background-color: var(--light);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3,
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-section p {
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section ul li a {
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .contact-info i {
+            margin-top: 0.25rem;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #334155;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-toggle, .nav-close {
+                display: block;
+            }
+
+            .nav-close {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .service-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-hero {
+                padding: 10rem 0 3rem;
+            }
+
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+
+            .services-hero p {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Nexustek<span>Fusion</span></a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="team.html" class="nav-link">Team</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="nav-close" id="nav-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Comprehensive technology solutions to drive innovation and transform your business operations.</p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-showcase">
+        <div class="container">
+            <h2 class="section-title">Comprehensive Services</h2>
+            <div class="services-grid">
+                <!-- Software Development -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Software Development</h3>
+                        <p class="service-description">Custom software solutions tailored to your business needs, from web applications to enterprise systems.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Web & Mobile Applications</li>
+                            <li><i class="fas fa-check"></i> Enterprise Software</li>
+                            <li><i class="fas fa-check"></i> API Development</li>
+                            <li><i class="fas fa-check"></i> System Integration</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI & ML Solutions -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">AI & ML Solutions</h3>
+                        <p class="service-description">Leverage artificial intelligence and machine learning to gain insights and automate processes.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Predictive Analytics</li>
+                            <li><i class="fas fa-check"></i> Natural Language Processing</li>
+                            <li><i class="fas fa-check"></i> Computer Vision</li>
+                            <li><i class="fas fa-check"></i> Custom ML Models</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IoT Solutions -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">IoT Solutions</h3>
+                        <p class="service-description">Connect devices and systems to gather data and enable smart automation across your operations.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Sensor Networks</li>
+                            <li><i class="fas fa-check"></i> Device Management</li>
+                            <li><i class="fas fa-check"></i> Real-time Monitoring</li>
+                            <li><i class="fas fa-check"></i> Predictive Maintenance</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Printing -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">3D Printing Services</h3>
+                        <p class="service-description">Transform your ideas into physical objects with our advanced 3D printing capabilities.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Rapid Prototyping</li>
+                            <li><i class="fas fa-check"></i> Custom Parts Manufacturing</li>
+                            <li><i class="fas fa-check"></i> Multiple Material Options</li>
+                            <li><i class="fas fa-check"></i> High-Precision Printing</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Makerspace Lab Setup -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Makerspace Lab Setup</h3>
+                        <p class="service-description">Create innovative spaces for creativity, collaboration, and hands-on learning with our makerspace solutions.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Lab Design & Planning</li>
+                            <li><i class="fas fa-check"></i> Equipment Selection</li>
+                            <li><i class="fas fa-check"></i> Safety Implementation</li>
+                            <li><i class="fas fa-check"></i> Training & Workshops</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drone Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drone"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Drone Services</h3>
+                        <p class="service-description">Leverage aerial technology for data collection, inspection, and innovative applications.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Aerial Photography & Videography</li>
+                            <li><i class="fas fa-check"></i> Surveying & Mapping</li>
+                            <li><i class="fas fa-check"></i> Infrastructure Inspection</li>
+                            <li><i class="fas fa-check"></i> Custom Drone Solutions</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robotic Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Robotic Services</h3>
+                        <p class="service-description">Automate processes and enhance capabilities with custom robotic solutions.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Industrial Automation</li>
+                            <li><i class="fas fa-check"></i> Robotic Process Automation</li>
+                            <li><i class="fas fa-check"></i> Custom Robot Development</li>
+                            <li><i class="fas fa-check"></i> Integration & Maintenance</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Mentorship -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Project Mentorship</h3>
+                        <p class="service-description">Guidance and expertise to help you successfully plan and execute your technology projects.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Technical Guidance</li>
+                            <li><i class="fas fa-check"></i> Project Planning</li>
+                            <li><i class="fas fa-check"></i> Best Practices</li>
+                            <li><i class="fas fa-check"></i> Ongoing Support</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rapid Prototyping -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">Rapid Prototyping</h3>
+                        <p class="service-description">Quickly transform concepts into working prototypes to validate ideas and accelerate development.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Concept Validation</li>
+                            <li><i class="fas fa-check"></i> Iterative Design</li>
+                            <li><i class="fas fa-check"></i> User Testing</li>
+                            <li><i class="fas fa-check"></i> Market Feedback</li>
+                        </ul>
+                        <div class="service-actions">
+                            <button class="btn-service btn-learn">Learn More</button>
+                            <button class="btn-service btn-quote">Get Quote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <h2 class="section-title">Service Categories</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="category-title">Digital Solutions</h3>
+                    <p class="category-description">Software, AI, and IoT services to power your digital transformation.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="category-title">Hardware & Prototyping</h3>
+                    <p class="category-description">3D printing, robotics, drones, and rapid prototyping services.</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="category-title">Education & Mentorship</h3>
+                    <p class="category-description">Makerspace setup, project mentorship, and innovation training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="process-title">Discovery</h3>
+                    <p class="process-description">We begin by understanding your unique challenges, goals, and requirements to define the project scope.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3 class="process-title">Design</h3>
+                    <p class="process-description">Our team creates detailed plans and prototypes to visualize the solution before development begins.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="process-title">Development</h3>
+                    <p class="process-description">We build your solution using agile methodologies with regular updates and feedback sessions.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="process-title">Deployment</h3>
+                    <p class="process-description">We carefully implement and launch your solution, ensuring a smooth transition and minimal disruption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Contact us today to discuss your project and discover how our technology solutions can drive your success.</p>
+            <a href="contact.html" class="btn btn-primary">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>NexustekFusion</h3>
+                    <p>Innovative technology solutions for the modern business. We fuse cutting-edge technologies to create transformative digital experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Software Development</a></li>
+                        <li><a href="services.html">AI & ML Solutions</a></li>
+                        <li><a href="services.html">IoT Solutions</a></li>
+                        <li><a href="services.html">3D Printing Services</a></li>
+                        <li><a href="services.html">Makerspace Lab Setup</a></li>
+                        <li><a href="services.html">Drone Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Innovation City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@nexustekfusion.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NexustekFusion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Services page JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.add('active');
+                });
+            }
+
+            if (navClose) {
+                navClose.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            }
+
+            // Close mobile menu when clicking on a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Service card interactions
+            const serviceCards = document.querySelectorAll('.service-card');
+            const learnButtons = document.querySelectorAll('.btn-learn');
+            const quoteButtons = document.querySelectorAll('.btn-quote');
+
+            // Add click events to service cards
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on buttons
+                    if (e.target.closest('.btn-service')) return;
+
+                    const serviceTitle = this.querySelector('.service-title').textContent;
+                    alert(`Learn more about our ${serviceTitle} service on our detailed service page.`);
+                });
+            });
+
+            // Learn more button functionality
+            learnButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const serviceTitle = this.closest('.service-card').querySelector('.service-title').textContent;
+                    alert(`Redirecting to detailed information about ${serviceTitle}`);
+                });
+            });
+
+            // Get quote button functionality
+            quoteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const serviceTitle = this.closest('.service-card').querySelector('.service-title').textContent;
+                    window.location.href = `contact.html?service=${encodeURIComponent(serviceTitle)}`;
+                });
+            });
+
+            // Category card interactions
+            const categoryCards = document.querySelectorAll('.category-card');
+
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryTitle = this.querySelector('.category-title').textContent;
+                    alert(`Filtering services by category: ${categoryTitle}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
