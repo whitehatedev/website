@@ -92,6 +92,52 @@
             transform: translateY(-2px);
         }
 
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-text {
+            position: absolute;
+            right: 70px;
+            background: var(--whatsapp);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover .whatsapp-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
         /* Navigation */
         .navbar {
             position: fixed;
@@ -925,6 +971,18 @@
             .modal-actions {
                 flex-direction: column;
             }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
+
+            .whatsapp-text {
+                display: none;
+            }
         }
 
         @media (max-width: 576px) {
@@ -982,6 +1040,12 @@
             </div>
         </div>
     </nav>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919657270849" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Chat with us</span>
+    </a>
 
     <!-- Products Hero Section with Background Image -->
     <section class="products-hero">
@@ -2169,7 +2233,8 @@
                     <h4>Contact Info</h4>
                     <ul class="contact-info">
                         <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Innovation City</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-phone"></i> +91 9657270849</li>
+                        <li><i class="fab fa-whatsapp"></i> +91 9657270849</li>
                         <li><i class="fas fa-envelope"></i> info@nexustekfusion.com</li>
                     </ul>
                 </div>
@@ -2181,9 +2246,11 @@
     </footer>
 
     <script>
+        // WhatsApp number - Global variable
+        const WHATSAPP_NUMBER = "919657270849";
+
         // Product data with local image paths
         const products = {
-            // ... (your existing products data remains exactly the same)
             1: {
                 title: "Bambu Lab X1 Carbon",
                 rating: 4.5,
@@ -2218,7 +2285,41 @@
                     }
                 ]
             },
-            // ... (all other product data remains the same)
+            2: {
+                title: "Creality Ender 3 V3 SE",
+                rating: 5,
+                ratingCount: 94,
+                currentPrice: "₹24,999",
+                originalPrice: "₹29,999",
+                discount: "17% OFF",
+                description: "The Creality Ender 3 V3 SE offers exceptional value with its reliable performance, user-friendly features, and excellent print quality at an affordable price point.",
+                features: [
+                    "Carborundum Glass Platform",
+                    "MeanWell Power Supply",
+                    "Resume Printing Function",
+                    "Ultra Silent Operation",
+                    "Magnetic Build Surface",
+                    "Easy Assembly"
+                ],
+                media: [
+                    {
+                        type: "image",
+                        src: "images/3d-printers/creality-ender-3-v2-1.jpg",
+                        alt: "Creality Ender 3 V3 SE 3D Printer"
+                    },
+                    {
+                        type: "image",
+                        src: "images/3d-printers/creality-ender-3-v2-2.jpg",
+                        alt: "Creality Ender 3 V3 SE Features"
+                    },
+                    {
+                        type: "image",
+                        src: "images/3d-printers/creality-ender-3-v2-3.jpg",
+                        alt: "Creality Ender 3 V3 SE Printing"
+                    }
+                ]
+            },
+            // ... (other product data remains the same)
         };
 
         // Global variables for modal state
@@ -2650,7 +2751,7 @@
                     // Create WhatsApp message
                     const message = `Hello! I'm interested in learning more about ${productTitle}. Could you please provide more information?`;
                     const encodedMessage = encodeURIComponent(message);
-                    const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`;
+                    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
                     // Open WhatsApp
                     window.open(whatsappUrl, '_blank');
@@ -2663,7 +2764,7 @@
                     const modalTitle = document.getElementById('modal-title').textContent;
                     const message = `Hello! I'm interested in learning more about ${modalTitle}. Could you please provide more information?`;
                     const encodedMessage = encodeURIComponent(message);
-                    const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`;
+                    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
                     window.open(whatsappUrl, '_blank');
                 }
             });
